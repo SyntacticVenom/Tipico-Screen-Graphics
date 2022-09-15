@@ -1,0 +1,470 @@
+:root {
+    --primary-color: #c8102e;
+    --base-color: #fff;
+    --base-text-color: var(--base-color);
+    --delay-move-out: 8s;
+    --delay-scene-one: 5s;
+    --delay-scene-two: var(--delay-move-out);
+    --base-anim-duration: 1s;
+    --ratio: 1;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 1.4vw;
+    line-height: 1.2;
+    @media (min-width: 1740px) {
+        font-size: 27px;
+    }
+
+    @media (max-height: 1080px) and (min-width: 1740px) {
+        font-size: 2.4vh;
+    }
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+@font-face {
+    font-family: 'tipico-light';
+    src: url('../fonts/tipico-light-webfont.woff2') format('woff2'),
+    url('../fonts/tipico-light-webfont.woff') format('woff'),
+    url('../fonts/tipico-light-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'tipico-regular';
+    src: url('../fonts/tipico-regular-webfont.woff2') format('woff2'),
+    url('../fonts/tipico-regular-webfont.woff') format('woff'),
+    url('../fonts/tipico-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    color: var(--base-text-color);
+    font: 30px/1.2 tipico-regular, Arial, Helvetica, sans-serif;
+}
+
+#wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: opacity 0.25s linear;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+.goal-banner {
+    background: var(--primary-color);
+    height: 100vh;
+    position: relative;
+}
+
+.goal-banner__logo {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 3.9rem;
+    height: 3.3rem;
+    clip-path: polygon(0 0, 100% 0%, 83% 100%, 0% 100%);
+    background: var(--base-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.3rem 0.3rem 0.3rem 0.2rem;
+    transform: translateX(-50rem);
+    animation: moveFromLeftRight 1.5s 0.5s forwards;
+    margin: -15.5rem 0;
+    @media (min-height: env(--xs)) {
+        margin: -17.6rem 0;
+    }
+
+    a {
+        display: flex;
+        width: 40%;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+.goal-banner__holder {
+    height: 100vh;
+    position: relative;
+}
+
+.goal-banner-scene {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 1.5rem;
+    transform: translate(-50%, -50%);
+}
+
+.goal-banner-scene-two {
+    max-width: 70rem;
+    padding-bottom: 0;
+    padding-top: 1rem;
+    width: 100%;
+    @media (min-height: env(--xs)) {
+        padding-top: 5rem;
+    }
+}
+
+.goal-banner__title {
+    font-size: 7.1rem;
+    line-height: 1;
+    margin: 0 0 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    transform: scale(0) translateY(3.3rem);
+    animation: titleAnimation 10s var(--base-anim-duration) forwards,
+    hideToTop var(--base-anim-duration) var(--delay-move-out) forwards;
+    @media (min-height: env(--xs)) {
+        margin: 0 0 2.3rem;
+    }
+}
+
+.goal-banner__columns {
+    display: flex;
+    gap: 2.6rem;
+    align-items: center;
+}
+
+.goal-banner__kit {
+    opacity: 0;
+    padding: 8.9rem 7.8rem;
+    background: rgba(255, 255, 255, 0.25);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    position: relative;
+    transform: translateX(-50rem);
+    animation: moveFromLeftRight var(--base-anim-duration) var(--delay-scene-one) forwards,
+    hideToLeft var(--base-anim-duration) var(--delay-move-out) forwards;
+
+    img {
+        width: 12rem;
+        height: 100%;
+        object-fit: contain;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.goal-banner__score {
+    opacity: 0;
+    font-size: 5.2rem;
+    text-transform: uppercase;
+    transform: translateX(50rem);
+    animation: moveFromLeftRight var(--base-anim-duration) var(--delay-scene-one) forwards,
+    hideToRight var(--base-anim-duration) var(--delay-move-out) forwards;
+
+    strong {
+        display: block;
+        font-size: 3.8rem;
+        margin: 0 0 0.1rem;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+.goal-banner__columns--scene-two {
+    align-items: start;
+    gap: 2rem;
+    margin-bottom: 2.3rem;
+}
+
+.goal-banner__center-block {
+    text-align: center;
+    line-height: 1;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(-90rem);
+    animation: moveFromTopBottom var(--base-anim-duration) var(--delay-scene-two) forwards;
+}
+
+.goal-banner__kit--scene-two-left,
+.goal-banner__kit--scene-two-right {
+    transform: translateX(-50rem);
+    animation: moveFromLeftRight var(--base-anim-duration) var(--delay-scene-two) forwards;
+}
+
+.goal-banner__kit--scene-two-right {
+    transform: translateX(50rem);
+}
+
+.goal-banner-scene-two__title {
+    font-size: 2.5rem;
+    position: relative;
+    margin: 0 0 2.2rem;
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: var(--base-color);
+    }
+}
+
+.goal-banner-scene-two__score {
+    display: block;
+    font-size: 8rem;
+    @media (min-height: env(--xs)) {
+        font-size: 9rem;
+    }
+}
+
+.goal-banner__frame {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.goal-banner__columns--scorers {
+    opacity: 0;
+    gap: 5.3rem;
+    align-items: start;
+    margin-top: -4.5rem;
+    margin-left: -1.9rem;
+    justify-content: center;
+    text-transform: uppercase;
+    transform: translateY(90rem);
+    animation: moveFromTopBottom var(--base-anim-duration) var(--delay-scene-two) forwards,
+    moveToTransparent calc(var(--base-anim-duration) / 4) calc(var(--delay-scene-two) + 3s) forwards;
+    @media (min-height: env(--xs)) {
+        margin-top: 0;
+    }
+}
+
+.goal-banner__col {
+    &:first-child {
+        .goal-banner__list {
+            text-align: right;
+        }
+    }
+}
+
+.goal-banner__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 2.2rem;
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.goal-banner__columns--new-odds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    gap: 1.1rem 2.6rem;
+    margin-top: -7.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: moveToVisible calc(var(--base-anim-duration) / 4) calc(var(--delay-scene-two) + 3s) forwards;
+    @media (min-height: 281px) {
+        margin-top: -6.5rem;
+    }
+    @media (min-height: env(--xs)) {
+        margin-top: -2.4rem;
+    }
+}
+
+.goal-banner__odds-item {
+    background: var(--base-color);
+    color: var(--primary-color);
+    padding: 3.1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10.8rem;
+    height: 12.6rem;
+    position: relative;
+    font-size: 3.1rem;
+    transform: rotateY(-90deg);
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    animation: flipItem var(--base-anim-duration) calc(var(--delay-scene-two) + 3s) forwards;
+}
+
+.goal-banner__odds-number {
+    position: absolute;
+    top: 1.1rem;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+}
+
+.goal-banner__odds-title {
+    font: 1.6rem/1.2 tipico-light, Arial, Helvetica, sans-serif;
+    width: 100%;
+    text-align: center;
+}
+
+.goal-banner__background {
+    position: absolute;
+    top: 0;
+    left: -2.8rem;
+    right: -2.8rem;
+    bottom: 0;
+    background: var(--primary-color);
+    z-index: 1;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    animation: moveToVisible calc(var(--base-anim-duration) / 4) calc(var(--delay-scene-two) + 6s) forwards;
+
+    > div {
+        margin-right: -2.85rem;
+
+        > div {
+            width: 5.6rem;
+            height: 5.6rem;
+            background: var(--base-color);
+            margin-bottom: 2.15rem;
+            transform: scale(0);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            animation-name: scaleForward, scaleBack;
+            animation-duration: var(--base-anim-duration);
+            animation-fill-mode: forwards;
+        }
+
+        &:nth-child(odd) {
+            margin-top: -3.75rem;
+        }
+
+        @for $i from 1 through 32 {
+            &:nth-child(#{$i}) {
+                > div {
+                    animation-delay: (($i * 50ms) + 14s), (($i * 50ms) + 16s);
+                }
+            }
+        }
+    }
+}
+
+@keyframes titleAnimation {
+    from {
+        transform: scale(0) translateY(3.3rem);
+    }
+    10% {
+        transform: scale(3) translateY(3.3rem);
+    }
+    20% {
+        transform: scale(2.7) translateY(3.3rem);
+    }
+    30% {
+        transform: scale(3) translateY(3.3rem);
+    }
+    40% {
+        transform: scale(2.7) translateY(3.3rem);
+    }
+    50%, to {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes hideToTop {
+    to {
+        opacity: 0;
+        transform: translateY(-90rem);
+    }
+}
+
+@keyframes hideToLeft {
+    to {
+        opacity: 0;
+        transform: translateX(-50rem);
+    }
+}
+
+@keyframes hideToRight {
+    to {
+        opacity: 0;
+        transform: translateX(50rem);
+    }
+}
+
+@keyframes moveFromTopBottom {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes moveFromLeftRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveToVisible {
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes moveToTransparent {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes flipItem {
+    from {
+        transform: rotateY(-90deg);
+    }
+    40% {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes scaleForward {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleBack {
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}

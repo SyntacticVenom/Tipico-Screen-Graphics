@@ -1,0 +1,62 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title Tipico Screen Graphics
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css', integrity='sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==', crossorigin='anonymous', referrerpolicy='no-referrer')
+  link(href='assets/dist/css/style.min.css', rel='stylesheet')
+#wrapper
+  .goal-banner
+    .goal-banner__background
+      - for(var a = 0; a < 32; a++)
+        div
+          - for(var b = 0; b < 22; b++)
+            div
+    span.goal-banner__logo
+      a(href='#')
+        svg(width='36', height='47', viewbox='0 0 36 47', fill='none', xmlns='http://www.w3.org/2000/svg')
+          path(fill-rule='evenodd', clip-rule='evenodd', d='M22.9917 5.72816C22.9917 2.61533 20.4394 0.0864258 17.2979 0.0864258C14.1614 0.0864258 11.6055 2.61533 11.6055 5.72816C11.6055 8.83737 14.1614 11.3677 17.2979 11.3677C20.4394 11.3677 22.9917 8.83737 22.9917 5.72816', fill='var(--primary-color)')
+          path(fill-rule='evenodd', clip-rule='evenodd', d='M0.0415018 22.6121C-0.0976216 23.2351 0.298625 23.738 0.92286 23.738H8.69411L6.25617 34.6285C5.02518 39.7681 6.42589 46.8534 15.6568 46.8534L27.2441 46.891C27.8436 46.891 28.4358 46.4105 28.5691 45.8186L29.9305 39.7254C30.0638 39.1335 29.6668 38.6147 29.0695 38.6147L18.4539 38.6169C15.8972 38.6169 15.7879 36.7334 16.2884 34.6285L18.7613 23.738H32.4216C33.0473 23.738 33.6693 23.2351 33.8063 22.6121L35.4313 15.3459C35.5697 14.7265 35.1749 14.2251 34.5492 14.2251H3.05123C2.42554 14.2251 1.80567 14.7265 1.66655 15.3459L0.0415018 22.6121', fill='var(--primary-color)')
+    .goal-banner__holder
+      .goal-banner-scene
+        h1.goal-banner__title.title-example goal!
+        .goal-banner__columns
+          .goal-banner__kit
+            a(href='#')
+              img(src='assets/dist/images/img-bayern.png', alt='image description')
+          .goal-banner__score
+            strong 73'
+            p lewandowski
+      .goal-banner-scene.goal-banner-scene-two
+        .goal-banner__columns.goal-banner__columns--scene-two
+          .goal-banner__kit.goal-banner__kit--scene-two-left
+            a(href='#')
+              img(src='assets/dist/images/img-bayern.png', alt='image description')
+          .goal-banner__center-block
+            h2.goal-banner-scene-two__title 73'
+            strong.goal-banner-scene-two__score 3 - 2
+          .goal-banner__kit.goal-banner__kit--scene-two-right
+            a(href='#')
+              img(src='assets/dist/images/img-borussia-dortmund.png', alt='image description')
+        .goal-banner__frame
+          .goal-banner__columns.goal-banner__columns--scorers
+            .goal-banner__col
+              ul.goal-banner__list
+                li 24' COMAN
+                li 50' GNABRY
+                li 73' LEWANDOWSKI
+            .goal-banner__col
+              ul.goal-banner__list
+                li 07' REUS
+                li 48' BELLINGHAM
+          .goal-banner__columns.goal-banner__columns--new-odds
+            strong.goal-banner__odds-item
+              b.goal-banner__odds-number 1
+              a(href='#') 1.30
+            strong.goal-banner__odds-item
+              b.goal-banner__odds-number x
+              a(href='#') 1.90
+            strong.goal-banner__odds-item
+              b.goal-banner__odds-number 2
+              a(href='#') 3.80
+            span.goal-banner__odds-title NEW ODDS
